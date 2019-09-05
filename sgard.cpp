@@ -13,7 +13,7 @@ using namespace std;
 #define CLS (cout << "\033[2J") //Clear screen
 #define PROMPT (cout << "*************** Monitoring and Control Center ***************\n\n")
 #define LOCATE(z,s) (cout << "\033[" << z << ';' << s << 'H')
-#define INPUTERROR (cout << "Can't recognize input sequence. Please use \"help\" or \"?\""\a")
+#define INPUTERROR (cout << "Can't recognize input sequence. Please use \"help\" or \"?\"\a")
 
 #include "humidity.h"
 
