@@ -2,7 +2,7 @@
  * humidity.h
  *
  *  Created on: Sep 16, 2018
- *      Author: eugene
+ *      Author: Ilweran
  */
 
 #ifndef HUMIDITY_H_

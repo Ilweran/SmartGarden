@@ -2,7 +2,7 @@
  * sgard.cpp
  *
  *  Created on: Sep 16, 2018
- *      Author: eugene
+ *      Author: Ilweran
  */
 
 

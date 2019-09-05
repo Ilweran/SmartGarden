@@ -2,7 +2,7 @@
  * humidity.cpp
  *
  *  Created on: Sep 16, 2018
- *      Author: eugene
+ *      Author: Ilweran
  */
 
 #include <iostream>
@@ -91,7 +91,7 @@ void humidity_graph(int array[], const int arraySize)
 						cout << "*" << setw(5);
 					else cout << " " << setw(5);
 				}
-				cout << endl;
+	  		cout << endl;
 				break;
 			case 21:
 				cout << setw(7);
