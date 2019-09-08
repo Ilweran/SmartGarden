@@ -6,22 +6,30 @@
  */
 
 #include <iostream>
-using std::cout;
-using std::endl;
-
-#include <cmath>
-
 #include <iomanip>
-using std::setw;
+#include <sstream>
+using namespace std;
+
+#include "humidity.h"
+
+const int samples = 13; //13 samples per hour
+int Humidity[] = {44, 43, 41, 39, 65, 75, 87, 99, 100, 97, 93, 90, 89};
 
 void print_help()
 {
-	cout << "\n? or help:									output a list of available commands" << endl;
-	cout << "show humidity:								draw a humidity graph" << endl;
-	cout << "show current temperature:		print temperature data" << endl;
-	cout << "show temperature magnitude:	print temperature magnitude" << endl;
-	cout << "cls:													clear screen" << endl;
-	cout << "exit:												exit application" << endl;
+	cout.setf(std::ios::left, std::ios::adjustfield);
+	cout.width(30);	cout << "\n? or help:";
+ 	cout.width(50); cout << "output a list of available commands" << endl;
+	cout.width(30); cout << "show humidity:";
+	cout.width(50); cout << "draw a humidity graph" << endl;
+	cout.width(30); cout << "show current temperature:";
+	cout.width(50); cout << "print temperature data" << endl;
+	cout.width(30); cout << "show temperature magnitude:";
+	cout.width(50); cout << "print temperature magnitude" << endl;
+	cout.width(30); cout << "cls:";
+	cout.width(50); cout << "clear screen" << endl;
+	cout.width(30); cout << "exit:";
+	cout.width(50); cout << "exit application" << endl;
 }
 
 void humidity_graph(int array[], const int arraySize)
