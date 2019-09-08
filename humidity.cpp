@@ -34,6 +34,9 @@ void print_help()
 
 void humidity_graph(int array[], const int arraySize)
 {
+	
+	cout.width(100);
+
 	int yMax = 26;
 	for(int y = yMax-1; y >= 0; y--)
 	{
