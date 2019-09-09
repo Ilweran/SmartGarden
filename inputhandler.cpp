@@ -68,6 +68,8 @@ bool execute_command(command cmd)
 			return true;
 	  	break;
 		case cli_exit:
+        CLS;
+        LOCATE(1,1);
 	  	return false;
 	  	break;
 		case unknown:
