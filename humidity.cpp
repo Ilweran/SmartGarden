@@ -19,7 +19,7 @@ void print_help()
 {
 	cout.setf(std::ios::left, std::ios::adjustfield);
 	cout.width(30);	cout << "\n? or help:";
- 	cout.width(50); cout << "output a list of available commands" << endl;
+ 	cout.width(50); cout << " output a list of available commands" << endl;
 	cout.width(30); cout << "show humidity:";
 	cout.width(50); cout << "draw a humidity graph" << endl;
 	cout.width(30); cout << "show current temperature:";
@@ -34,11 +34,10 @@ void print_help()
 
 void humidity_graph(int array[], const int arraySize)
 {
-	
-	cout.width(100);
 
-	int yMax = 26;
-	for(int y = yMax-1; y >= 0; y--)
+  cout.unsetf(std::ios::adjustfield);
+  int yMax = 26; //Nimber of lines in the graph
+  for(int y = yMax-1; y >= 0; y--)
 	{
 		switch(y)
 		{
@@ -318,5 +317,5 @@ void humidity_graph(int array[], const int arraySize)
 				break;
 			}
 	}
-	cout << setw(40) << "Time (minutes)" << endl << endl;
+	cout << setw(50) << "Time (minutes)" << endl << endl;
 }
