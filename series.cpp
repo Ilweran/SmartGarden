@@ -5,6 +5,7 @@
 #include <chrono>
 #include <iostream>
 #include <ctime>
+#include <conio.h>
 using namespace std;
 
 #include "series.h"
@@ -25,25 +26,25 @@ double getInitValue()
 void calcSeries(double x0, double (*calcNextValue(double)))
 {
 	double x_cur = x0;
-    double x_next = 0;
-    chrono::time_point<std::chrono::system_clock> start, end;
-    auto start = chrono::steady_clock::now();
-    int elapsed_seconds = 0;
+  double x_next = 0;
+  chrono::time_point<std::chrono::system_clock> start, end;
+  auto start = chrono::steady_clock::now();
+  int elapsed_seconds = 0;
     
-    do
-    {
-      x_next = calcNextValue(x_cur);
+  do
+  {
+    x_next = calcNextValue(x_cur);
 	  processCurrentValue(x_cur);
-      auto end = std::chrono::system_clock::now();
-      elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds> (end-start).count();
-    } while((abs(x_next - x_cur) > epsilon) || elapsed_seconds < 30)
+    auto end = std::chrono::system_clock::now();
+    elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds> (end-start).count();
+  } while((abs(x_next - x_cur) > epsilon) || elapsed_seconds < 30)
 
-    printMessage("Divergent sequence? Press 's' to stop calculation.");
+  printMessage("Divergent sequence? Press any key to stop calculation.");
     
-    while(не нажата любая кнопка)
-    {
-      x_next = calcNextValue(x_cur);
-      processCurrentValue(x_cur);
-    }
+  while(!kbhit())
+  {
+    x_next = calcNextValue(x_cur);
+    processCurrentValue(x_cur);
+  }
 }
 
