@@ -28,6 +28,8 @@ void print_help()
 	cout.width(50); cout << "print temperature magnitude" << endl;
 	cout.width(30); cout << "cls:";
 	cout.width(50); cout << "clear screen" << endl;
+	cout.width(30); cout << "store word:";
+	cout.width(50); cout << "insert a text string into a trie" << endl;
 	cout.width(30); cout << "exit:";
 	cout.width(50); cout << "exit application" << endl;
 }

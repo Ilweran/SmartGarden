@@ -13,7 +13,7 @@ using namespace std;
 
 
 enum command {help = 1, draw_humidity_graph, show_current_temperature,
-	    show_temperature_magnitude, empty, cls, cli_exit, unknown};
+	    show_temperature_magnitude, empty, cls, cli_exit, word_store, unknown};
 
 command parse(string str);
 

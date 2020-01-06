@@ -1,5 +1,6 @@
 #include "inputhandler.h"
 #include "humidity.h"
+#include "auxlib.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -30,7 +31,10 @@ command parse(string str)
 							else
 								if(str == "exit")
 									cmd = cli_exit;
-								else cmd = unknown;
+								else
+		if(str == "store word")
+		  cmd = word_store;
+		else cmd = unknown;
 	return cmd;
 }
 
@@ -46,7 +50,7 @@ bool execute_command(command cmd)
 	  	break;
 		case draw_humidity_graph:
 			humidity_graph(Humidity, samples);
-	  	cout << endl;
+			cout << endl;
 			return true;
 	  	break;
 		case show_current_temperature:
@@ -58,7 +62,7 @@ bool execute_command(command cmd)
 			return true;
 	  	break;
 		case empty:
-		  cout << endl;
+
 			return true;
 	  	break;
 		case cls:
@@ -67,19 +71,24 @@ bool execute_command(command cmd)
 	  	PROMPT;
 			return true;
 	  	break;
+		case word_store:
+		  input_and_store_Word();
+		  cout << endl;
+		  return true;
+		break;
 		case cli_exit:
-        CLS;
-        LOCATE(1,1);
+		  CLS;
+		  LOCATE(1,1);
 	  	return false;
 	  	break;
 		case unknown:
-	  	INPUTERROR;
-	  	cout << endl;
+		  INPUTERROR;
+		  cout << endl;
 			return true;
 	  	break;
 		default:
-	  	INPUTERROR;
-	  	cout << endl;
+		  INPUTERROR;
+		  cout << endl;
 			return true;
 	  	break;
 	}
