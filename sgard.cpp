@@ -10,24 +10,21 @@
 #include <string>
 using namespace std;
 
-#include "humidity.h"
-#include "inputhandler.h"
+#include "consolemanager.h"
 
 int main()
 {
-	CLS;
-	LOCATE(1,1);
-	cout << "\033[32m"; //Text color: green
-	PROMPT;
+  ConsoleManager console;
+  console.clearScreen();
+  console.setTextColor(32);	//Text color: green
+  console.locateCursor(1,1);
 
-	string input_str = "";
+  do
+  {
+    console.printPrompt();
+    getline(cin, console.input_str);
+  } while(console.execute_command(console.parse(console.input_str)));
 
-	do
-	{
-		cout << "> ";
-		getline(cin, input_str);
-	} while(execute_command(parse(input_str)));
-
-	return 0;
+  return 0;
 }
 

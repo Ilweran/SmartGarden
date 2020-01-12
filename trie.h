@@ -19,7 +19,14 @@ public:
   Trie()
   {
     root = new TrieNode();
+    trieName = "English";
   }
+
+  Trie(string s)
+    {
+      root = new TrieNode();
+      trieName = s;
+    }
 
   ~Trie()
   {
@@ -29,9 +36,11 @@ public:
   void insertString(string);
   bool deleteString(TrieNode* , string);
   bool searchString(string);
+  string getName();
 
 private:
   TrieNode* root;
+  string trieName;
 };
 
 

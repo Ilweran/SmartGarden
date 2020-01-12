@@ -37,10 +37,3 @@ void TrieNode::setKeyI(int i, TrieNode* node)
 {
   this->symbolArray[i] = node;
 }
-
-/*
-void setDummyArray(TrieNode* rootptr, TrieNode* dummyptr)
-{
-  for (int i=0; i<ALPHABET_SIZE; i++)
-    rootptr->symbolArray[i] = dummyptr;
-}*/

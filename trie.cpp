@@ -9,6 +9,11 @@
 #include "trie.h"
 using namespace std;
 
+
+string Trie::getName()
+{
+  return trieName;
+}
 // A Class representing a Trie node
 
 // Iterative function to insert a key in the Trie
