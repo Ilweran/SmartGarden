@@ -15,7 +15,7 @@ ConsoleManager::ConsoleManager()
   textColor = 32;
   language = "eng";
   commandHistoryLength = 20;
-  prompt = '>';
+  prompt = ">";
   oak = new Trie("english");
   for(auto hC=historyCommands.begin(); hC!=historyCommands.end(); ++hC)
       *hC = "";
@@ -41,6 +41,11 @@ void ConsoleManager::setTextColor(uint n)
 void ConsoleManager::printPrompt()
 {
   cout << prompt;
+}
+
+void ConsoleManager::setPrompt(string s)
+{
+  prompt = s;
 }
 
 void ConsoleManager::printInputError()
@@ -99,11 +104,12 @@ void ConsoleManager::humidity_graph(int array[], const int arraySize)
 	  {
 	    if(array[x] == 100)
 	    {
-	      cout << "1" << setw(5);
+	      cout << "1";
+	      setw(5);
 	    }
 	    else cout << " " << setw(5);
-	    cout << endl;
 	  }
+	  cout << endl;
 	  break;
 	case 24:
 	  cout << setw(6) << " ";
@@ -406,7 +412,6 @@ bool ConsoleManager::execute_command(command cmd)
 		{
 		  ConsoleManager::clearScreen();
 		  ConsoleManager::locateCursor(1,1);
-		  ConsoleManager::printPrompt();
 		  return true;
 		}
 	  	break;
@@ -436,10 +441,22 @@ bool ConsoleManager::execute_command(command cmd)
 		  return false;
 		}
 	  	break;
+		case enable:
+		{
+		  ConsoleManager::setPrompt("#");
+		  return true;
+		}
+		break;
+		case disable:
+		{
+		  ConsoleManager::setPrompt(">");
+		  return true;
+		}
+		break;
 		case unknown:
 		{
 		  ConsoleManager::printInputError();
-		  //cout << endl;
+		  cout << endl;
 		  return true;
 		}
 	  	break;
@@ -458,30 +475,25 @@ command ConsoleManager::parse(string str)
   command cmd = unknown;
   if(str == "?" || str == "help")
     cmd = help;
-  else
-    if(str == "show humidity")
-      cmd = draw_humidity_graph;
-    else
-      if(str == "show current temperature")
-	cmd = show_current_temperature;
-      else
-	if(str == "show temperature magnitude")
-	  cmd = show_temperature_magnitude;
-	else
-	  if(str == "")
-	    cmd = empty;
-	  else
-	    if(str == "cls")
-	      cmd = cls;
-	    else
-	      if(str == "trie exists")
-		cmd = trie_exists;
-	      else
-		if(str == "exit")
-		  cmd = cli_exit;
-		else
-		   if(str == "store word")
-		     cmd = word_store;
-		   else cmd = unknown;
+  if(str == "show humidity")
+    cmd = draw_humidity_graph;
+  if(str == "show current temperature")
+    cmd = show_current_temperature;
+  if(str == "show temperature magnitude")
+    cmd = show_temperature_magnitude;
+  if(str == "")
+    cmd = empty;
+  if(str == "cls")
+    cmd = cls;
+  if(str == "trie exists")
+    cmd = trie_exists;
+  if(str == "exit")
+    cmd = cli_exit;
+  if(str == "store word")
+    cmd = word_store;
+  if(str == "enable")
+    cmd = enable;
+  if(str == "disable")
+    cmd = disable;
   return cmd;
 }

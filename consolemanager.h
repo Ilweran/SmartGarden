@@ -15,7 +15,8 @@
 using namespace std;
 
 enum command {help = 1, draw_humidity_graph, show_current_temperature,
-  	    show_temperature_magnitude, empty, cls, cli_exit, word_store, trie_exists, unknown};
+  	    show_temperature_magnitude, empty, cls, cli_exit, word_store, trie_exists, enable,
+	    disable, unknown};
 
 
 class ConsoleManager
@@ -38,6 +39,7 @@ class ConsoleManager
    void printHelp();
    void humidity_graph(int array[], const int arraySize);
    string input_str = "";
+   void setPrompt(string);
 
   private:
   unsigned short int textColor;
@@ -45,7 +47,7 @@ class ConsoleManager
   unsigned short int commandHistoryLength;
   vector<string> historyCommands;
   Trie* oak;
-  char prompt;
+  string prompt;
   int Humidity[13] = {44, 43, 41, 39, 65, 75, 87, 99, 100, 97, 93, 90, 89};
   const int samples = 13; //13 samples per hour
 };
